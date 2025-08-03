@@ -1,0 +1,16 @@
+{
+  "name": "alumni-franchise-landing",
+  "version": "1.0.0",
+  "description": "Landing page para franquia Alumni by Better",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "build": "echo 'No build step required for static site'"
+  },
+  "keywords": ["franquia", "alumni", "ensino", "idiomas"],
+  "author": "Alumni by Better",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.0.0"
+  }
+}
