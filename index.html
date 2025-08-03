@@ -508,6 +508,17 @@
                 font-size: 1.1rem;
             }
             
+            .hero-content {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+                text-align: center;
+            }
+            
+            .hero-content img {
+                width: 280px !important;
+                height: 320px !important;
+            }
+            
             .section-title {
                 font-size: 2rem;
             }
@@ -563,10 +574,23 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Transforme sua Vida com a Franquia Digital que Mais Cresce no Brasil</h1>
-            <p>Fature até R$ 50.000/mês trabalhando de casa com apenas R$ 58.000 de investimento inicial</p>
-            <a href="#form" class="cta-button">Quero Saber Como Começar</a>
+        <div class="hero-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; max-width: 1200px;">
+            <div>
+                <h1>Transforme sua Vida com a Franquia Digital que Mais Cresce no Brasil</h1>
+                <p>Fature até R$ 50.000/mês trabalhando de casa com apenas R$ 58.000 de investimento inicial</p>
+                <a href="#form" class="cta-button">Quero Saber Como Começar</a>
+            </div>
+            <div style="text-align: center;">
+                <img src="https://images.unsplash.com/photo-1594736797933-d0401ba0fe65?w=400&h=500&fit=crop&crop=face&q=80" 
+                     alt="Mulher feliz e bem-sucedida trabalhando como franqueada Alumni" 
+                     style="width: 350px; height: 400px; object-fit: cover; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 5px solid #fbbf24;">
+                <div style="margin-top: 15px; color: rgba(255,255,255,0.9); font-style: italic;">
+                    "Hoje tenho a liberdade financeira que sempre sonhei!"
+                </div>
+                <div style="color: #fbbf24; font-weight: bold; margin-top: 5px;">
+                    Maria - Franqueada Alumni
+                </div>
+            </div>
         </div>
     </section>
 
