@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni by Better - Franquia Virtual</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e3a8a 0%, #b45309 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+
+        .cta-header {
+            background: linear-gradient(135deg, #1e3a8a, #b45309);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.4);
+        }
+
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .cta-primary {
+            background: white;
+            color: #1e3a8a;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            padding: 18px 40px;
+            border: 2px solid white;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: #1e3a8a;
+        }
+
+        .countdown-section {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        .countdown-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .countdown-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #fbbf24;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin: 1rem 0;
+        }
+
+        .countdown-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        .section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-alt {
+            background: #f8fafc;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1e293b;
+        }
+
+        .alumni-heritage {
+            background: linear-gradient(135deg, #1e3a8a, #1e40af);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(30, 58, 138, 0.2);
+        }
+
+        .heritage-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #f59e0b;
+        }
+
+        .heritage-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .heritage-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+            border-top: 4px solid #1e3a8a;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .benefit-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .numbers-section {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+        }
+
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .number-card {
+            padding: 2rem;
+        }
+
+        .big-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #f59e0b;
+        }
+
+        .investment-section {
+            text-align: center;
+        }
+
+        .investment-card {
+            background: linear-gradient(135deg, #1e3a8a, #b45309);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 2rem auto;
+            box-shadow: 0 15px 40px rgba(30, 58, 138, 0.2);
+        }
+
+        .investment-amount {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .investment-details {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .roi-highlight {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .timeline-month {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-right: 2rem;
+            min-width: 80px;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-section {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-stats {
+                gap: 20px;
+            }
+            
+            .cta-primary, .cta-secondary {
+                display: block;
+                margin: 10px auto;
+                width: fit-content;
+            }
+            
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+            
+            .numbers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .countdown-number {
+                font-size: 3rem;
+            }
+
+            .heritage-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">Alumni by Better</div>
+                <a href="#contato" class="cta-header">Fale Conosco</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Franquia Virtual Alumni by Better</h1>
+            <p class="subtitle">O Centro Binacional com 64 anos de tradição no ensino de idiomas agora em modelo 100% digital. Tecnologia de ponta, baixo investimento e alta rentabilidade.</p>
+            
+            <div class="countdown-section">
+                <div class="countdown-title">⚡ VAGAS LIMITADAS ⚡</div>
+                <div class="countdown-number pulse" id="availableSpots">5</div>
+                <div class="countdown-text">vagas restantes neste mês<br><small>Meta: 10 franqueados por mês</small></div>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">300%</span>
+                    <span class="stat-label">ROI em 24 meses</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">3-4</span>
+                    <span class="stat-label">meses para break-even</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">120</span>
+                    <span class="stat-label">franqueados em 12 meses</span>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <a href="#investimento" class="cta-primary">Ver Investimento</a>
+                <a href="#como-funciona" class="cta-secondary">Como Funciona</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section fade-in">
+        <div class="container">
+            <div class="alumni-heritage">
+                <div class="heritage-title">ALUMNI</div>
+                <div class="heritage-subtitle">Centro Binacional de Idiomas</div>
+                <div class="heritage-description">
+                    Desde 1960, a Alumni é referência nacional no ensino de idiomas. Reconhecida como Centro Binacional, oferece certificações internacionais e metodologia comprovada. Com mais de 6 décadas de tradição educacional, agora une sua expertise pedagógica à tecnologia de ponta da Better Edtech para criar uma experiência de aprendizado única e inovadora.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="beneficios" class="section section-alt fade-in">
+        <div class="container">
+            <h2 class="section-title">Por que escolher a Alumni by Better?</h2>
+            
+            <div class="benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💻</div>
+                    <h3 class="benefit-title">100% Digital</h3>
+                    <p class="benefit-description">Sem necessidade de estrutura física. Opere de qualquer lugar com vendas remotas e operação online.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏆</div>
+                    <h3 class="benefit-title">Centro Binacional</h3>
+                    <p class="benefit-description">64 anos de tradição educacional. Marca consolidada e respeitada no mercado brasileiro.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3 class="benefit-title">Alta Lucratividade</h3>
+                    <p class="benefit-description">Margem líquida de até 89% com modelo de comissionamento atrativo de 25%.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤖</div>
+                    <h3 class="benefit-title">Tecnologia IA</h3>
+                    <p class="benefit-description">Plataforma gamificada com inteligência artificial para personalização do ensino.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="benefit-title">Leads Qualificados</h3>
+                    <p class="benefit-description">Geração de 10-40 leads por dia através de campanhas digitais especializadas.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">📞</div>
+                    <h3 class="benefit-title">Suporte Completo</h3>
+                    <p class="benefit-description">Treinamento intensivo, suporte 24/7 e acompanhamento contínuo para seu sucesso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="numeros" class="numbers-section fade-in">
+        <div class="container">
+            <h2 class="section-title">Números que Impressionam</h2>
+            
+            <div class="numbers-grid">
+                <div class="number-card">
+                    <div class="big-number">120</div>
+                    <p>Franqueados planejados no primeiro ano</p>
+                </div>
+                
+                <div class="number-card">
+                    <div class="big-number">15%</div>
+                    <p>Crescimento anual do mercado online</p>
+                </div>
+                
+                <div class="number-card">
+                    <div class="big-number">25%</div>
+                    <p>Comissão base para franqueados</p>
+                </div>
+                
+                <div class="number-card">
+                    <div class="big-number">64</div>
+                    <p>Anos de tradição educacional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="investimento" class="section investment-section fade-in">
+        <div class="container">
+            <h2 class="section-title">Investimento e Retorno</h2>
+            
+            <div class="investment-card">
+                <div class="investment-amount">R$ 58.000 - R$ 78.000</div>
+                <div class="investment-details">Investimento inicial total incluindo taxa de franquia, capital de giro e equipamentos</div>
+                
+                <div class="roi-highlight">
+                    <strong>ROI de 300% em 24 meses</strong><br>
+                    Payback em apenas 4-5 meses
+                </div>
+                
+                <p style="margin-top: 1rem;">Lucro líquido mensal estimado após o 6º mês: R$ 18.000</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="como-funciona" class="section section-alt fade-in">
+        <div class="container">
+            <h2 class="section-title">Como Funciona - Primeiros 12 Meses</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-month">Mês 1-3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Treinamento e Setup</div>
+                        <p>Treinamento intensivo de 10 dias, configuração de sistemas e início das operações com 200 leads/mês.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-month">Mês 4-6</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Crescimento</div>
+                        <p>Aumento da conversão para 12-13%, atingimento do break-even operacional e estabilização das vendas.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-month">Mês 7-12</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Expansão</div>
+                        <p>Upgrade para pacote avançado (400 leads/mês), conversão até 15% e faturamento de R$ 240k/mês.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">Perfil Ideal do Franqueado</h2>
+            
+            <div class="benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">👤</div>
+                    <h3 class="benefit-title">Demografia</h3>
+                    <p class="benefit-description">25-45 anos, ensino superior, experiência em vendas/comercial, localizado em capitais ou cidades >100k habitantes.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="benefit-title">Perfil</h3>
+                    <p class="benefit-description">Empreendedor nato, orientado a resultados, boa comunicação, disciplinado e tech-savvy.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3 class="benefit-title">Financeiro</h3>
+                    <p class="benefit-description">Capital disponível R$ 80-100k, sem restrições de crédito, capacidade de sustentação de 6 meses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="depoimentos" class="section section-alt fade-in">
+        <div class="container">
+            <h2 class="section-title">Tecnologia e Inovação</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div class="testimonial">
+                    <p class="testimonial-text">"Plataforma gamificada com IA para personalização de conteúdo, chatbot 24/7, integração completa entre LMS, CRM e sistema de pagamentos."</p>
+                    <p class="testimonial-author">Stack Tecnológico Avançado</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 3rem 0;">
+                    <div style="text-align: center; padding: 1rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎮</div>
+                        <strong>LMS Gamificado</strong>
+                        <p style="font-size: 0.9rem; color: #64748b;">Plataforma Learning Lab</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 1rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚡</div>
+                        <strong>CRM Inteligente</strong>
+                        <p style="font-size: 0.9rem; color: #64748b;">Sistema Clint</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 1rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">💳</div>
+                        <strong>Pagamentos Auto</strong>
+                        <p style="font-size: 0.9rem; color: #64748b;">Asaas com split</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 1rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📊</div>
+                        <strong>BI Avançado</strong>
+                        <p style="font-size: 0.9rem; color: #64748b;">Power BI dashboards</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="form-section fade-in">
+        <div class="container">
+            <h2 class="section-title">Seja um Franqueado Alumni by Better</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.9;">Preencha o formulário e receba o business plan completo</p>
+            
+            <div class="form-container">
+                <form id="franchiseForm">
+                    <div class="form-group">
+                        <label class="form-label">Nome Completo *</label>
+                        <input type="text" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">E-mail *</label>
+                        <input type="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Telefone/WhatsApp *</label>
+                        <input type="tel" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Cidade/Estado *</label>
+                        <input type="text" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Capital Disponível</label>
+                        <select class="form-input">
+                            <option>R$ 50.000 - R$ 80.000</option>
+                            <option>R$ 80.000 - R$ 120.000</option>
+                            <option>R$ 120.000 - R$ 200.000</option>
+                            <option>Acima de R$ 200.000</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Experiência Profissional</label>
+                        <textarea class="form-input form-textarea" placeholder="Conte sobre sua experiência em vendas, educação ou empreendedorismo..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="cta-primary" style="width: 100%; margin-top: 1rem;">
+                        Receber Business Plan Completo
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Alumni by Better. Todos os direitos reservados.</p>
+            <p style="margin-top: 1rem; opacity: 0.7;">Centro Binacional com 64 anos de tradição no ensino de idiomas</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simulação do countdown de vagas
+        function updateCountdown() {
+            const now = new Date();
+            const dayOfMonth = now.getDate();
+            
+            // Baseado no dia do mês, calcula vagas restantes (sempre entre 2 e 5)
+            let availableSpots = 5 - (dayOfMonth % 4);
+            if (availableSpots < 2) availableSpots = 2;
+            
+            document.getElementById('availableSpots').textContent = availableSpots;
+        }
+
+        // Animação de scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Scroll suave para links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Handle form submission
+        document.getElementById('franchiseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado pelo interesse! Entraremos em contato em breve com o business plan completo.');
+        });
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.big-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.innerText.replace(/[^0-9]/g, ''));
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.innerText = counter.innerText.replace(/[0-9,]+/, target.toLocaleString('pt-BR'));
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = counter.innerText.replace(/[0-9,]+/, Math.floor(current).toLocaleString('pt-BR'));
+                    }
+                }, 20);
+            });
+        }
+
+        // Trigger counter animation when section comes into view
+        const numbersSection = document.getElementById('numeros');
+        const numbersObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    numbersObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        numbersObserver.observe(numbersSection);
+
+        // Initialize countdown
+        updateCountdown();
+        
+        // Update countdown every hour
+        setInterval(updateCountdown, 3600000);
+    </script>
+</body>
+</html>
